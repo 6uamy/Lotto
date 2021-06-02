@@ -41,17 +41,15 @@ class ConstellationActivity : AppCompatActivity() {
                        txtConstell.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
                     }
                 })
-    }
 }
-
 fun getShuffledLottoNumbersFromHash(str: String): MutableList<Int>{
     val list = mutableListOf<Int>()
 
     for (number in 1..45){
         list.add(number)
     }
-    val targetString = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Date()) + str
 
+    val targetString = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Date()) + str
     list.shuffle(Random(targetString.hashCode().toLong()))
 
     return list.subList(0, 6)
@@ -75,4 +73,5 @@ private fun makeConstellationString(month: Int, dayOfMonth: Int): String {
         in 1225.. 1231 -> return "염소자리"
         else -> return "기타별자리"
     }
+}
 }
