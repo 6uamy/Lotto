@@ -2,9 +2,13 @@ package com.example.lotto
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import java.text.SimpleDateFormat
+import java.time.Month
+import java.time.Year
 import java.util.*
 
 class ResultActivity : AppCompatActivity() {
@@ -14,12 +18,13 @@ class ResultActivity : AppCompatActivity() {
 
         val result = intent.getIntegerArrayListExtra("result") ?: return
         val sConstellation = intent.getStringExtra("constellation")
-
         val result_sorted = result?.sorted()
+
 
         sConstellation?.let {
             val resultLabel = findViewById<TextView>(R.id.resultLabel)
-            resultLabel.text = "${sConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format(Date())} 로또 번호입니다"
+            val datePicker = findViewById<DatePicker>(R.id.datePicker)
+            resultLabel.text = "${sConstellation}의 ${datePicker.dayOfMonth} 로또 번호입니다"
         }
 
         val lottoBallImageStartId = R.drawable.ball_01
